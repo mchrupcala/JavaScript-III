@@ -76,10 +76,33 @@ Humanoid.prototype.greet = function(){
   return `${this.name} offers a greeting in ${this.language}.`;
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// STRETCH GOALS
 
 
+function Villain(vAttribute){
+  Humanoid.call(this, vAttribute);
+  this.attack = vAttribute.attack;
+}
 
- 
+Villain.prototype = Object.create(Humanoid.prototype);
+
+Villain.prototype.suckBlood = function(){
+  return `${this.name} attacks using ${this.attack}.`
+};
+
+function Hero(hAttribute){
+  Humanoid.call(this, hAttribute);
+  this.attack = hAttribute.attack;
+}
+
+Hero.prototype = Object.create(Humanoid.prototype);
+
+Hero.prototype.karateChop = function(){
+  return `${this.name} attacks using ${this.attack}.`
+};
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 /*
