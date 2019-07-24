@@ -7,7 +7,12 @@
   
   Each constructor function has unique properties and methods that are defined in their block comments below:
 */
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
   
+
+
 /*
   === GameObject ===
   * createdAt
@@ -16,12 +21,28 @@
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
+function GameObject(attribute){
+  this.createdAt= attribute.createdAt;
+  this.name= attribute.name;
+  this.dimensions= attribute.dimensions;
+}
+GameObject.prototype.destroy = function(){
+  return `${this.name} was removed from the game.`;
+};
+
+
+
 /*
   === CharacterStats ===
   * healthPoints
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
+
+function CharacterStats(attribute){
+  this.healthPoints = attribute.healthPoints;
+}
+
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -32,14 +53,33 @@
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
+
+function Humanoid(attribute){
+  this.team = attribute.team;
+  this.weapons = attribute.weapons;
+  this.language = attribute.language;
+}
+
+Humanoid.prototype.greet = function(){
+  return `${this.name} offers a greeting in ${this.language}.`;
+};
+
+
  
+//////////////////////////////////////////////////////////////////////////////////////////
+
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
   * Instances of CharacterStats should have all of the same properties as GameObject.
 */
 
-// Test you work by un-commenting these 3 objects and the list of console logs below:
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Test your work by un-commenting these 3 objects and the list of console logs below:
 
 /*
   const mage = new Humanoid({
@@ -58,6 +98,8 @@
     language: 'Common Tongue',
   });
 
+
+
   const swordsman = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -74,6 +116,9 @@
     ],
     language: 'Common Tongue',
   });
+
+
+
 
   const archer = new Humanoid({
     createdAt: new Date(),
@@ -92,6 +137,11 @@
     language: 'Elvish',
   });
 
+  //////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
@@ -103,6 +153,15 @@
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 */
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
