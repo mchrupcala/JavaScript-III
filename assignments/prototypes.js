@@ -39,9 +39,18 @@ GameObject.prototype.destroy = function(){
   * should inherit destroy() from GameObject's prototype
 */
 
-function CharacterStats(attribute){
-  this.healthPoints = attribute.healthPoints;
+function CharacterStats(charAttribute){
+  GameObject.call(this, charAttribute);   //Pass GameObject attributes to child.
+  this.healthPoints = charAttribute.healthPoints;
 }
+
+CharacterStats.prototype = Object.create(GameObject.prototype);  //order matters for some reason.
+
+CharacterStats.prototype.takeDamage = function(){    //order matters for some reason.
+  return `${this.name} took damage.`;
+};
+
+
 
 
 /*
@@ -54,15 +63,20 @@ function CharacterStats(attribute){
   * should inherit takeDamage() from CharacterStats
 */
 
-function Humanoid(attribute){
-  this.team = attribute.team;
-  this.weapons = attribute.weapons;
-  this.language = attribute.language;
+function Humanoid(humAttribute){
+  CharacterStats.call(this, humAttribute);
+  this.team = humAttribute.team;
+  this.weapons = humAttribute.weapons;
+  this.language = humAttribute.language;
 }
+
+Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 Humanoid.prototype.greet = function(){
   return `${this.name} offers a greeting in ${this.language}.`;
 };
+
+
 
 
  
@@ -81,7 +95,7 @@ Humanoid.prototype.greet = function(){
 //////////////////////////////////////////////////////////////////////////////////////////
 // Test your work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -152,7 +166,7 @@ Humanoid.prototype.greet = function(){
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
 
 
