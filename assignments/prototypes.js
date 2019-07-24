@@ -175,9 +175,48 @@ Hero.prototype.karateChop = function(){
   });
 
   //////////////////////////////////////////////////////////////////////////////////////////
+///STRETCH GOALS
+
+  const sal = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 5,
+      height: 5,
+    },
+    healthPoints: 30,
+    name: 'Sal',
+    team: 'South Philly',
+    weapons: [
+      'Brick',
+      'Stomach',
+    ],
+    language: 'English',
+    attack: 'karateChop'
+  });
 
 
+  const gabbaghoul = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 1,
+      height: 1,
+    },
+    healthPoints: 40,
+    name: 'GabbaGhoul',
+    team: "Sal's Cheesesteaks",
+    weapons: [
+      'Bacteria',
+      'Disentary',
+    ],
+    language: 'None',
+    attack: 'suckBlood'
+  });
+ 
 
+
+  //////////////////////////////////////////////////////////////////////////////////////////
 
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
